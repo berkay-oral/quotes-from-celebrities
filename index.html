@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YORUMLAR</title>
+</head>
+<body>
+    <style>
+        body{
+            min-height: 100vh;
+            display: flex;
+            background: gray;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-transform: capitalize;
+
+        }
+
+        .container{
+            text-align: center;
+            padding: 2rem;
+            border-radius: 5px;
+            background-color: #ffff;
+            flex: 0 0 80%;/*ekran büyüdüğünde containerde esneyecek büyüyecek*/
+        }
+
+        #quoteBtn{
+           border: none;
+           color: #fff;
+           background: #d89798;
+           font-size: 1.2rem;
+           padding:0.35rem 0.80rem;
+           border-radius: 7px;
+           cursor: pointer;
+           transition: .1s ease-in;
+           outline: none;
+        }
+
+        #quoteBtn:hover{
+        -webkit-box-shadow: 2px 2px 12px 0px rgba(50, 50, 50, 0.88);
+        -moz-box-shadow:    2px 2px 12px 0px rgba(50, 50, 50, 0.88);
+        box-shadow:         2px 2px 12px 0px rgba(50, 50, 50, 0.88);
+        }
+
+
+        blockquote{
+            background: rgb(248, 222, 193);
+            border-left: 10px solid  gray;
+            margin: 1.5rem;
+            padding: 0.5rem;
+        }
+
+        #quoteAuthor{
+            color: #d89798;
+        }
+    </style>
+
+    <div class="container">
+
+        <h2>ünlülerden alıntılar</h2>
+        <button type="button" id="quoteBtn">alıntıları görmek için basın</button>
+    
+        <blockquote>
+        <h2 id="quote">Alıntı</h2>
+        <h3 id="quoteAuthor">alıntının yazarı</h3>
+       </blockquote>
+
+    </div>
+
+
+  
+
+    <script>
+         //alıntılar dizisi içerisine nesneler
+         const alintilar = [
+             
+                            {isim: "Stephen King", sozu: "Hangi çiçek, diğerini sarı açtı diye ayıplar?"},//dizinin ilk elemanı index 0
+                            {isim: "Jhon F.Kennedy", sozu: "şimiz geçmişin sorumluluğunu değil, geleceğin rotasını belirlemektir"}, //index 1
+                            {isim: "Abraham Lincoln", sozu: "Bazıları yavaş yürür ama asla geri adım atmazlar"},//index 2
+                            {isim: "Leonardo Da Vinci", sozu: "Bilgi, umudun çocuğudur."}// index 3
+                            
+                        ]
+
+
+        let index = 0;
+
+        
+        const alintiBtn = document.getElementById("quoteBtn");
+        const alintiYazari = document.querySelector("#quoteAuthor");
+        const alinti = document.querySelector("#quote");
+  
+
+        alintiBtn.addEventListener("click", alintiGoster);
+         
+        function alintiGoster(){
+
+            //her buttona bastığımda bana alintiler indexlerini rastele göster
+            //rastgele aşağıya yuvarla
+             let number = Math.floor(Math.random()*alintilar.length);//alintilar uzunluğunu random yuvarla(number demek  index demek(rastgele index))
+            
+            alintiYazari.innerHTML = alintilar[number].isim;//alintilar nesnesinin  isimlerini  random(rastgele) al
+            alinti.innerHTML = alintilar[number].sozu;//alintilar nesnesinin sozu lerini random(rastgele) al
+
+        }
+
+
+    </script>
+</body>
+</html>
